@@ -26,13 +26,13 @@ class BinaryTree:
             self.right = new_node
 
     def pre_order(self):
-        '''
+        """
         This is the first depth-first search technique
         node -> left -> right
         :return:
-        '''
+        """
 
-        print(self.data)
+        print(self.data, end=' ')
 
         if self.left:
             self.left.pre_order()
@@ -40,4 +40,17 @@ class BinaryTree:
         if self.right:
             self.right.pre_order()
 
-    
+    def in_order(self):
+        """
+        This is the second depth-first search technique
+        left -> node -> right
+        :return:
+        """
+
+        if self.left:
+            self.left.in_order()
+
+        print(self.data, end=' ')
+
+        if self.right:
+            self.right.in_order()
