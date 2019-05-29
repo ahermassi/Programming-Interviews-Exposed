@@ -54,3 +54,18 @@ class BinaryTree:
 
         if self.right:
             self.right.in_order()
+
+    def post_order(self):
+        """
+         This is the third depth-first search technique
+        left -> right -> node
+        :return:
+        """
+
+        if self.left:
+            self.left.post_order()
+
+        if self.right:
+            self.right.post_order()
+
+        print(self.data, end=' ')

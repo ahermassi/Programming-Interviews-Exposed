@@ -44,3 +44,6 @@ if __name__ == '__main__':
 
     print("\nInorder traversal: ", end='')
     tree2.in_order()
+
+    print("\nPostorder traversal: ", end='')
+    tree2.post_order()
