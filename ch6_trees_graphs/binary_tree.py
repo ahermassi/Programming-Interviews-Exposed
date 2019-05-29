@@ -84,9 +84,9 @@ class BinaryTree:
         queue.put(self)
 
         while not queue.empty():
-            
+
             current_node = queue.get()
-            print(current_node.data)
+            print(current_node.data, end=' ')
 
             if current_node.left:
                 queue.put(current_node.left)
