@@ -68,4 +68,4 @@ class BinaryTree:
         if self.right:
             self.right.post_order()
 
-        print(self.data)
+        print(self.data, end=' ')
