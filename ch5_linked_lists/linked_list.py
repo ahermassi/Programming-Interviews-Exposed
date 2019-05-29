@@ -14,7 +14,7 @@ class LinkedList:
         else:
             n = self.start_node
             while n is not None:
-                print(n.item, " ")
+                print(n.data, " ")
                 n = n.ref
 
     def insert_at_start(self, data):
@@ -41,7 +41,7 @@ class LinkedList:
         new_node = Node(data)
 
         before_node = self.start_node
-        while before_node.item != x and before_node is not None:
+        while before_node.data != x and before_node is not None:
             before_node = before_node.ref
 
         if before_node is None:
@@ -60,13 +60,13 @@ class LinkedList:
             print("List has no element")
             return
 
-        if n.item == x:
+        if n.data == x:
             new_node = Node(data)
             new_node.ref = n
             self.start_node = new_node
 
         while n.ref is not None:
-            if n.ref.item == x:
+            if n.ref.data == x:
                 break
             n = n.ref
 
@@ -121,7 +121,7 @@ class LinkedList:
 
         n = self.start_node
         while n is not None:
-            if n.item == x:
+            if n.data == x:
                 print("Item found.")
                 return True
             n = n.ref
@@ -166,13 +166,13 @@ class LinkedList:
             print("No item to delete")
             return
 
-        if self.start_node.item == x:
+        if self.start_node.data == x:
             self.start_node = self.start_node.ref
             return
 
         n = self.start_node
         while n.ref is not None:
-            if n.ref.item == x:
+            if n.ref.data == x:
                 break
             n = n.ref
 
