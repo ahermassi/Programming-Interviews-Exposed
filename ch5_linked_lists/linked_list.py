@@ -1,4 +1,4 @@
-from PIE.ch5_linked_lists.node import Node
+from node.node import Node
 
 
 class LinkedList:
