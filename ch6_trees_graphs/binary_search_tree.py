@@ -20,5 +20,12 @@ class BinarySearchTree:
         else:
             self.right.insert_node(data)
 
+    def find_node(self, data):
 
+        if data < self.data and self.left:  # equivalent to ... and self.left is not None
+            return self.left.find_node(data)
 
+        if data > self.data and self.right:
+            return self.right.find_node(data)
+
+        return self.data == data
