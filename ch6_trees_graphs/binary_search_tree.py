@@ -39,7 +39,7 @@ class BinarySearchTree:
             return False
 
         elif data > self.data and self.right: # target node is to the right and current node has right child
-            return self.right.reomve_node(data, self)
+            return self.right.remove_node(data, self)
 
         elif data > self.data: # target node is to the right but current node has no right child
             return False
