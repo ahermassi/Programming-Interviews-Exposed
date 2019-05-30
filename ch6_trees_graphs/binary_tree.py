@@ -1,3 +1,6 @@
+from queue import Queue
+
+
 class BinaryTree:
 
     def __init__(self, data):
@@ -69,3 +72,24 @@ class BinaryTree:
             self.right.post_order()
 
         print(self.data, end=' ')
+
+    def bfs(self):
+
+        """
+        This is the breadth-first search technique
+        :return:
+        """
+
+        queue = Queue()
+        queue.put(self)
+
+        while not queue.empty():
+
+            current_node = queue.get()
+            print(current_node.data, end=' ')
+
+            if current_node.left:
+                queue.put(current_node.left)
+
+            if current_node.right:
+                queue.put(current_node.right)

@@ -47,3 +47,6 @@ if __name__ == '__main__':
 
     print("\nPostorder traversal: ", end='')
     tree2.post_order()
+
+    print("\nBFS traversal: ", end='')
+    tree2.bfs()
