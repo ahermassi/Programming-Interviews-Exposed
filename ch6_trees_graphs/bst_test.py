@@ -12,6 +12,14 @@ if __name__ == '__main__':
     bst.insert_node(25)
     bst.insert_node(19)
 
+    #       | 15 |
+    #      /      \
+    #    |10|     |20|
+    #   /    \    /    \
+    # |8|   |12| |17| |25|
+    #              \
+    #              |19|
+
     print(bst.find_node(15))  # True
     print(bst.find_node(10))  # True
     print(bst.find_node(8))  # True
@@ -22,4 +30,39 @@ if __name__ == '__main__':
     print(bst.find_node(19))  # True
 
     print(bst.find_node(0))  # False
+
+    print(bst.pre_order())
+
+    bst.remove_node(8)
+
+    #     |15|
+    #   /      \
+    # |10|     |20|
+    #    \    /    \
+    #   |12| |17| |25|
+    #          \
+    #          |19|
+
+    print(bst.pre_order())
+
+    bst.remove_node(17)
+
+    #        |15|
+    #      /      \
+    #    |10|     |20|
+    #       \    /    \
+    #      |12| |19| |25|
+
+    print(bst.pre_order())
+
+    bst.remove_node(15)
+
+    #        |19|
+    #      /      \
+    #    |10|     |20|
+    #        \        \
+    #        |12|     |25|
+
+    print(bst.pre_order())
+
 
