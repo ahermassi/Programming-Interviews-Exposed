@@ -90,3 +90,48 @@ class BinarySearchTree:
             return self.left.find_minimum_value()
         else:
             return self.data
+
+    def pre_order(self):
+        """
+        This is the first depth-first search technique
+        node -> left -> right
+        :return:
+        """
+
+        print(self.data, end=' ')
+
+        if self.left:
+            self.left.pre_order()
+
+        if self.right:
+            self.right.pre_order()
+
+    def in_order(self):
+        """
+        This is the second depth-first search technique
+        left -> node -> right
+        :return:
+        """
+
+        if self.left:
+            self.left.in_order()
+
+        print(self.data, end=' ')
+
+        if self.right:
+            self.right.in_order()
+
+    def post_order(self):
+        """
+         This is the third depth-first search technique
+        left -> right -> node
+        :return:
+        """
+
+        if self.left:
+            self.left.post_order()
+
+        if self.right:
+            self.right.post_order()
+
+        print(self.data, end=' ')
