@@ -34,10 +34,11 @@ class Graph:
         vertices_list is used as a mapping from a vertex position in adjacency matrix to actual vertex name.
         :return:
         """
-        edges = [(self.vertices_list(i), self.vertices_list(j), self.adj_matrix[i][j])
+        edges = [(self.vertices_list[i], self.vertices_list[j], self.adj_matrix[i][j])
                  for i in range(self.num_vertices)
                  for j in range(self.num_vertices)
                  if self.adj_matrix[i][j] != -1]
+
         return edges
 
     def get_matrix(self):
