@@ -6,76 +6,94 @@ class BinarySearchTree:
         self.right = None
 
     def insert_node(self, data):
+        """
+        This method inserts a new node with value <data> into the BST
+        :param data: value of node to insert
+        :return:
+        """
 
-        if data <= self.data:
+        if data <= self.data:  # if value to insert is less than or equal the current node's value, then insert to left
             if self.left is None:
                 new_node = BinarySearchTree(data)
-                self.left = new_node
+                self.left = new_node  # the new node is the only left child of the current node
             else:
-                self.left.insert_node(data)
+                self.left.insert_node(data)  # recursive call to current nodes's left subtree
 
-        elif self.right is None:
+        elif self.right is None:  # if value to insert is greater than the current node's value, then insert to right
             new_node = BinarySearchTree(data)
-            self.right = new_node
+            self.right = new_node  # the new node is the only right child of the current node
         else:
-            self.right.insert_node(data)
+            self.right.insert_node(data) # recursive call to current nodes's right subtree
 
     def find_node(self, data):
+        """
+        This method searches for node of value <data> in the BST.
+        :param data: value of sought node
+        :return: boolean (value found or not)
+        """
 
-        if data < self.data and self.left:  # equivalent to ... and self.left is not None
-            return self.left.find_node(data)
+        if data < self.data and self.left:  # if sought value is less than current node's value, then look to the left
+            return self.left.find_node(data)  # recursive call to current nodes's left subtree
 
-        if data > self.data and self.right:
-            return self.right.find_node(data)
+        if data > self.data and self.right:  # if sought value is greater than current node's value, look to the right
+            return self.right.find_node(data)  # recursive call to current nodes's right subtree
 
-        return self.data == data
+        return self.data == data  # stationary condition: the entire subtree has been checked. Return value found or not
 
     def remove_node(self, data, parent=None):
+        """
+        This method removes a node of value <data> from the BST
+        :param data: value of node to remove
+        :param parent: parent of node to remove
+        :return: boolean (node removed or not)
+        """
 
-        if data < self.data and self.left: # target node is to the left and current node has left child
-            return self.left.remove_node(data, self) # self in the next call refers to the parent
+        if data < self.data and self.left:  # if target node is to the left and current node has left child ...
+            return self.left.remove_node(data, self)  # then recursively call remove_node on left subtree with
+            # current node as parent
 
-        elif data < self.data: # target node is to the left but current node has no left child
+        elif data < self.data:  # if target node is to the left but current node has no left child, removal fails
             return False
 
-        elif data > self.data and self.right: # target node is to the right and current node has right child
-            return self.right.remove_node(data, self)
+        elif data > self.data and self.right: # if target node is to the right and current node has right child ...
+            return self.right.remove_node(data, self)  # then recursively call remove_node on right subtree with
+            # current node as parent
 
-        elif data > self.data: # target node is to the right but current node has no right child
+        elif data > self.data:  # if target node is to the right but current node has no right child, removal fails
             return False
 
-        else: # current node is the node to delete; we've got the node and its parent in hand
+        else:  # current node is the node to delete; we've got the node and its parent in hand
 
-            if self.left is None and self.right is None:  # leaf node
+            if self.left is None and self.right is None:  # node to delete is a leaf node
 
-                if data < parent.data:  # node is to the left of its parent
+                if data < parent.data:  # node to delete is to the left of its parent
                     parent.left = None  # delete the paren't left node
                     self.clear_node()
                 else:
                     parent.right = None
                     self.clear_node()
 
-            elif self.left and self.right is None:  # node has only a left child
+            elif self.left and self.right is None:  # node to delete has only a left child
 
-                if data < parent.data:  # node is to the left of its parent
+                if data < parent.data:  # node to delete is to the left of its parent
                     parent.left = self.left
                     self.clear_node()
-                else: # node is to the right of its parent
+                else:  # node to delete is to the right of its parent
                     parent.right = self.left
                     self.clear_node()
 
-            elif self.right and self.left is None:  # node has only a right child
+            elif self.right and self.left is None:  # node to delete has only a right child
 
-                if data < parent.data:  # node is to the left of its parent
+                if data < parent.data:  # node to delete is to the left of its parent
                     parent.left = self.right
                     self.clear_node()
-                else: # node is to the right of its parent
+                else: # node to delete is to the right of its parent
                     parent.right = self.right
                     self.clear_node()
 
-            else:  # node has both a left and a right child
+            else:  # node to delete has both a left and a right child
 
-                self.data = self.right.find_minimum_value()
+                self.data = self.right.find_minimum_value()  # search for the minimum node in the right subtree
                 self.right.remove_node(self.data, self)
 
             return True
@@ -86,8 +104,8 @@ class BinarySearchTree:
         self.right = None
 
     def find_minimum_value(self):
-        if self.left:
-            return self.left.find_minimum_value()
+        if self.left:  # minimum value should be to the left
+            return self.left.find_minimum_value()  # recursive call on the left subtree
         else:
             return self.data
 
@@ -98,7 +116,7 @@ class BinarySearchTree:
         :return:
         """
 
-        print(self.data, end=' ')
+        print(self.data, end=' ') 
 
         if self.left:
             self.left.pre_order()
