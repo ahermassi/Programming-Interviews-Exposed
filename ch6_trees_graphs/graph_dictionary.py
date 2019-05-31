@@ -21,10 +21,23 @@ from collections import defaultdict
 
 
 def add_edge(graph, src, dst):
+    """
+    For each edge connecting source and destination, this function adds an entry to the dictionary with source as key
+    and appending to sources' list as value
+    :param graph: graph to update
+    :param src: source node
+    :param dst: destination node
+    :return: 
+    """
     graph[src].append(dst)
 
 
 def generate_edges(graph):
+    """
+    This function returns a list of the different edges of the graph
+    :param graph: graph to traverse
+    :return: list of edges
+    """
     edges = []
     for node, adj_list in graph.items():
         for adj in adj_list:
@@ -34,6 +47,14 @@ def generate_edges(graph):
 
 
 def find_path(graph, start, end, path=None):
+    """
+    This function returns the first possible path from start node to end node
+    :param graph: graph to search
+    :param start: start node
+    :param end: end node
+    :param path: list that holds the different nodes to hit in order to go from start to node
+    :return: return the path list
+    """
     if path is None:
         path = []
 
