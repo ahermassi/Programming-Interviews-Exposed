@@ -27,7 +27,7 @@ def add_edge(graph, src, dst):
     :param graph: graph to update
     :param src: source node
     :param dst: destination node
-    :return: 
+    :return:
     """
     graph[src].append(dst)
 
@@ -60,18 +60,34 @@ def find_path(graph, start, end, path=None):
 
     path.append(start)
 
-    if start == end:
+    if start == end:  # if end coincides with start, do nothing
         return path
 
     if end in graph[start]:  # end node is immediate neighbor of start node
         path.append(end)
         return path
 
-    for adj in graph[start]:
-        if adj not in path: # if node hasn't been visited before
+    for adj in graph[start]:  # investigate paths that start from the immediate neighbors
+        if adj not in path:  # if node hasn't been visited before
             return find_path(graph, adj, end, path)  # new path contains the already visited nodes
 
-    return None
+    return None  # if all nodes have been visited an no path was returned, no path is possible
+
+
+def find_all_paths(graph, start, end, path=None):
+
+    if path is None:
+        path = []
+    path = path + [start]
+    if start == end:
+        return [path]  # return a list of lists of paths
+    all_paths = []
+    for adj in graph[start]:  # investigate paths that start from the immediate neighbors
+        if adj not in path:  # avoid cycles
+            new_path = find_all_paths(graph, adj, end, path)
+            for p in new_path:
+                all_paths.append(p)
+    return all_paths
 
 
 if __name__ == '__main__':
@@ -93,3 +109,5 @@ if __name__ == '__main__':
     print("Path from b to a: ", find_path(graph, 'b', 'a'))  # b -> c -> a
 
     print("Path from a to f: ", find_path(graph, 'a', 'f'))
+
+    print("All paths from b to a: ", find_all_paths(graph, 'b', 'a'))  # b -> c -> a AND b -> e -> c -> a
