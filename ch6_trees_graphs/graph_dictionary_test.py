@@ -1,5 +1,5 @@
 from collections import defaultdict
-from graph_dictionary import add_edge, generate_edges, find_path, find_all_paths
+from graph_dictionary import add_edge, generate_edges, find_path, find_all_paths, find_shortest_path
 
 if __name__ == '__main__':
     graph = defaultdict(list)
@@ -21,4 +21,6 @@ if __name__ == '__main__':
 
     print("Path from a to f: ", find_path(graph, 'a', 'f'))
 
-    print("All paths from b to a: ", find_all_paths(graph, 'b', 'a'))  # b -> c -> a AND b -> e -> c -> a
+    print("All paths from b to a: ", find_all_paths(graph, 'b', 'e'))  # b -> c -> a AND b -> e -> c -> a
+
+    print("Shortest path from b to a: ", find_shortest_path(graph, 'b', 'e'))

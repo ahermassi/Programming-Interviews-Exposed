@@ -17,7 +17,6 @@
 #           "e" : ["c", "b"],
 #           "f" : []
 #         }
-from collections import defaultdict
 
 
 def add_edge(graph, src, dst):
@@ -75,7 +74,6 @@ def find_path(graph, start, end, path=None):
 
 
 def find_all_paths(graph, start, end, path=None):
-
     if path is None:
         path = []
     path = path + [start]
@@ -89,3 +87,6 @@ def find_all_paths(graph, start, end, path=None):
                 all_paths.append(p)
     return all_paths
 
+
+def find_shortest_path(graph, start, end, path=None):
+    return sorted(find_all_paths(graph, start, end, path), key=len)[0]
