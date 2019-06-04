@@ -116,7 +116,7 @@ class BinarySearchTree:
         :return:
         """
 
-        print(self.data, end=' ') 
+        print(self.data, end=' ')
 
         if self.left:
             self.left.pre_order()
